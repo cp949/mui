@@ -68,6 +68,9 @@ importers:
 
   sub/mui:
     dependencies:
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       lodash.throttle:
         specifier: ^4.1.1
         version: 4.1.1
@@ -96,9 +99,6 @@ importers:
       '@types/react-dom':
         specifier: ^19.1.9
         version: 19.1.9(@types/react@19.1.14)
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
       eslint:
         specifier: ^9.36.0
         version: 9.36.0
