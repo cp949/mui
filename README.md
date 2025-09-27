@@ -74,7 +74,7 @@ pnpm lint
 pnpm format
 
 # 타입 체크
-pnpm type-check
+pnpm typecheck
 ```
 
 ### 프로젝트 구조

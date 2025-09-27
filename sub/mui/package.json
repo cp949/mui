@@ -10,7 +10,7 @@
     "dev": "npm run build -- --watch",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "type-check": "tsc --pretty --noEmit"
+    "typecheck": "tsc --pretty --noEmit"
   },
   "dependencies": {
     "clsx": "^2.1.1",
