@@ -1,0 +1,88 @@
+{
+  "name": "@cp949/mui",
+  "version": "2.0.8",
+  "description": "CP949 MUI React component library",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsup --clean",
+    "dev": "npm run build -- --watch",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "type-check": "tsc --pretty --noEmit"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lodash.throttle": "^4.1.1"
+  },
+  "devDependencies": {
+    "@mui/material": "^7.3.2",
+    "@mui/system": "^7.3.2",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/lodash.throttle": "^4.1.9",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "eslint": "^9.36.0",
+    "prettier": "^3.6.2",
+    "react": "^19.1.1",
+    "rxjs": "^7.8.2",
+    "shelljs": "^0.10.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
+  },
+  "peerDependencies": {
+    "@mui/material": "^7",
+    "@mui/system": "^7",
+    "react": "^18 || ^19",
+    "rxjs": "^7"
+  },
+  "author": "jjfive",
+  "homepage": "",
+  "license": "MIT",
+  "repository": "",
+  "keywords": [
+    "mui",
+    "react",
+    "components",
+    "ui",
+    "cp949"
+  ],
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./hooks": {
+      "require": {
+        "types": "./dist/hooks/index.d.cts",
+        "default": "./dist/hooks/index.cjs"
+      },
+      "import": {
+        "types": "./dist/hooks/index.d.ts",
+        "default": "./dist/hooks/index.js"
+      }
+    },
+    "./helper": {
+      "require": {
+        "types": "./dist/helper/index.d.cts",
+        "default": "./dist/helper/index.cjs"
+      },
+      "import": {
+        "types": "./dist/helper/index.d.ts",
+        "default": "./dist/helper/index.js"
+      }
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

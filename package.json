@@ -1,0 +1,22 @@
+{
+  "name": "@cp949/mui-workspace",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "turbo format",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.4"
+  },
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": ">=18"
+  }
+}
