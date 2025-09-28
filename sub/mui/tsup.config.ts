@@ -15,6 +15,12 @@ export default defineConfig((options) => {
     splitting: true,
     sourcemap: true,
     clean: false,
-    // external: ["react", "react/jsx-runtime"],
+    external: [
+      "react",
+      "react/jsx-runtime",
+      "@mui/material",
+      "@mui/system",
+      "react-dom"
+    ],
   };
 });
