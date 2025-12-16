@@ -96,11 +96,30 @@ pnpm format
 # 타입 체크 (모든 패키지)
 pnpm typecheck
 
+# E2E 테스트 (React 19 + React 18)
+pnpm e2e
+
+# E2E 테스트 (React 19만)
+pnpm e2e:react19
+
+# E2E 테스트 (React 18만)
+pnpm e2e:react18
+
 # 특정 패키지 작업
 pnpm --filter @cp949/mui build
 pnpm --filter @cp949/mui lint
 pnpm --filter @cp949/mui format
 ```
+
+### E2E 테스트(Playwright) 개요
+
+이 레포의 E2E는 **동일한 테스트 소스(`apps/e2e-test`)를 React 19/18 환경에서 각각 실행**하여,
+훅/컴포넌트 변경 시 런타임 회귀를 잡는 것을 목표로 합니다.
+
+- **React 19 러너**: `apps/e2e-test` (기본 포트: 4173)
+- **React 18 러너**: `apps/e2e-test-react18` (기본 포트: 4174)
+
+> WSL 환경에서는 headless 실행이 기본이며, Playwright Chromium이 설치되어 있어야 합니다.
 
 ### 프로젝트 구조
 
@@ -118,7 +137,9 @@ pnpm --filter @cp949/mui format
 │   │   └── tsup.config.ts      # 빌드 설정
 │   ├── eslint-config/          # 공유 ESLint 설정 (@repo/eslint-config)
 │   └── typescript-config/      # 공유 TypeScript 설정 (@repo/typescript-config)
-├── apps/                       # 향후 문서/데모 사이트용
+├── apps/
+│   ├── e2e-test/                # E2E 테스트(React 19) - Vite + Playwright
+│   └── e2e-test-react18/        # E2E 러너(React 18) - 동일 소스 기반 실행
 ├── turbo.json                  # Turbo 설정
 ├── package.json                # 루트 워크스페이스
 └── pnpm-workspace.yaml        # 워크스페이스 설정

@@ -317,6 +317,28 @@ const MyComponent: React.FC<FlexRowProps> = ({ spacing, children, ...props }) =>
 - **TypeScript**: ^5.0.0 (recommended)
 - **Node.js**: >=18.0.0
 
+## 🧪 E2E Tests (React 18 + React 19)
+
+This repo maintains Playwright E2E tests to protect runtime behavior of critical hooks/components across **both React 18 and React 19**.
+
+Run from the monorepo root:
+
+```bash
+# Install deps
+pnpm install
+
+# Run E2E on React 19 + React 18
+pnpm e2e
+
+# Run E2E on a single React version
+pnpm e2e:react19
+pnpm e2e:react18
+```
+
+Notes:
+- The shared test source lives in `apps/e2e-test/` (pages + Playwright specs).
+- `apps/e2e-test-react18/` is a lightweight runner that executes the same tests with React 18.
+
 ## 📄 License
 
 MIT © [CP949](https://github.com/cp949)
