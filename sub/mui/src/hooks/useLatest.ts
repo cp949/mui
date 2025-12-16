@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useIsomorphicEffect } from './useIsomorphicEffect.js';
 
 /**
  * 값의 최신 참조를 유지하는 React 훅입니다.
@@ -75,6 +76,10 @@ import { useRef } from 'react';
  */
 export function useLatest<T>(value: T) {
   const ref = useRef(value);
-  ref.current = value;
+  // Keep updates out of render to satisfy react-hooks/refs.
+  // Using an isomorphic layout effect ensures event handlers see the latest value.
+  useIsomorphicEffect(() => {
+    ref.current = value;
+  }, [value]);
   return ref;
 }

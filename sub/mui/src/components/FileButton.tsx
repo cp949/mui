@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { forwardRef, useRef } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { useComposedRefs } from '../hooks/useComposedRefs.js';
 
 export interface FileButtonProps<Multiple extends boolean = false> {
@@ -121,15 +121,22 @@ export const FileButton: FileButtonComponent = forwardRef<HTMLInputElement, File
     } = props;
 
     const inputRef = useRef<HTMLInputElement>(null);
+    const [openToken, setOpenToken] = useState(0);
 
     /**
      * 파일 선택 다이얼로그를 엽니다.
      */
     const onClick = () => {
       if (!disabled) {
-        inputRef.current?.click();
+        // Avoid accessing refs synchronously during render-prop execution (react-hooks/refs).
+        // We trigger the click from an effect instead.
+        setOpenToken((t) => t + 1);
       }
     };
+    useEffect(() => {
+      if (openToken === 0) return;
+      inputRef.current?.click();
+    }, [openToken]);
 
     /**
      * 파일 선택 후 호출됩니다.
@@ -155,7 +162,10 @@ export const FileButton: FileButtonComponent = forwardRef<HTMLInputElement, File
       }
     };
 
-    assignRef(resetRef, reset);
+    // Keep ref assignment out of render.
+    useEffect(() => {
+      assignRef(resetRef, reset);
+    }, [resetRef]);
     return (
       <>
         {children({ onClick })}

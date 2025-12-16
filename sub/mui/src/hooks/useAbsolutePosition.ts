@@ -57,7 +57,8 @@ export function useAbsolutePosition<E extends Element = Element>(
             if (entries[0]) {
               // const { x, y, width, height, top, left, bottom, right } = entries[0].contentRect;
               // setRect({ x, y, width, height, top, left, bottom, right });
-              setRefreshToken(Date.now());
+              // Avoid impure Date.now() (react-hooks/purity). A monotonic counter is sufficient.
+              setRefreshToken((t) => t + 1);
             }
           }),
     [],

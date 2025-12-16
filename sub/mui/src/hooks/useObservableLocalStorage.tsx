@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { EventEmitter } from '../eventemitter/eventemitter3.js';
 import { useLocalStorage } from './useLocalStorage.js';
 
@@ -30,8 +30,9 @@ export function useObservableLocalStorage<T>(
   key: string,
   initialValue: T | GetFn<T>,
 ): [T, SetStateFn<T | null>] {
-  const defaultValueRef = useRef<T>(getDefaultValue(initialValue));
-  const [value, setValue, removeValue] = useLocalStorage<T | null>(key, defaultValueRef.current);
+  // Compute default value once per mount without manual memoization deps.
+  const [defaultValue] = useState<T>(() => getDefaultValue(initialValue));
+  const [value, setValue, removeValue] = useLocalStorage<T | null>(key, defaultValue);
   const emitter = useMemo(() => getOrCreateEmitter(key), [key]);
 
   const setValueAndNotify = useCallback(
@@ -54,5 +55,5 @@ export function useObservableLocalStorage<T>(
     };
   }, [key, emitter, setValue]);
 
-  return [value ?? defaultValueRef.current, setValueAndNotify];
+  return [value ?? defaultValue, setValueAndNotify];
 }

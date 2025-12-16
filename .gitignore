@@ -147,3 +147,10 @@ dist
 
 # Turbo
 .turbo/
+
+# Playwright
+playwright-report/
+test-results/
+
+# E2E runner build outputs (React 18/19)
+dist-react*/

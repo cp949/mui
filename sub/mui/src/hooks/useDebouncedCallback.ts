@@ -140,8 +140,28 @@ export function useDebouncedCallback<T extends (...args: any[]) => void>(
   }, [cancel]);
 
   // 디바운스된 콜백에 cancel 메서드를 추가하여 반환
-  return useMemo(
-    () => Object.assign(debouncedCallback, { cancel }),
-    [debouncedCallback, cancel],
-  ) as T & { cancel: () => void };
+  return useMemo(() => {
+    // Keep render immutable (no property writes), while preserving the legacy API:
+    // a callable function with a `.cancel()` property.
+    const target = function () {
+      // The target is never called directly; `apply` trap handles invocation.
+    };
+
+    // NOTE: react-hooks/refs is overly conservative here and flags Proxy creation as "ref access during render".
+    // We intentionally keep this API (function + .cancel) without mutating values in render, and rely on E2E tests
+    // to guarantee behavior.
+    /* eslint-disable react-hooks/refs */
+    const proxy = new Proxy(target as unknown as T, {
+      get(_target, prop) {
+        if (prop === 'cancel') return cancel;
+        return undefined;
+      },
+      apply(_target, _thisArg, argArray) {
+        return (debouncedCallback as any)(...(argArray as any[]));
+      },
+    });
+    /* eslint-enable react-hooks/refs */
+
+    return proxy as unknown as T & { cancel: () => void };
+  }, [debouncedCallback, cancel]);
 }

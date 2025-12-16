@@ -10,11 +10,15 @@ export function useScript(
   const optionsRef = useRef(options);
 
   useEffect(() => {
+    const setStatusAsync = (next: LoadingState) => {
+      Promise.resolve().then(() => setStatus(next));
+    };
+
     const prevScript = document.querySelector(`script[src="${src}"]`) as HTMLScriptElement | null;
 
     const domStatus = prevScript?.getAttribute('data-status');
     if (domStatus) {
-      setStatus(domStatus as LoadingState);
+      setStatusAsync(domStatus as LoadingState);
       return;
     }
 
@@ -54,7 +58,7 @@ export function useScript(
         }
       };
     } else {
-      setStatus('unknown');
+      setStatusAsync('unknown');
     }
   }, [src]);
 

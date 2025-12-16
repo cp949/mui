@@ -33,7 +33,10 @@ import { useSessionStorage } from './useSessionStorage.js';
 export function useAudioUnlocked(options: { onUnlocked: () => void }): boolean {
   const [unlocked, setUnlocked] = useSessionStorage('audio-unlocked', false);
   const onUnlockedRef = useRef(options.onUnlocked);
-  onUnlockedRef.current = options.onUnlocked;
+  // Keep ref writes out of render to satisfy react-hooks/refs.
+  useIsomorphicEffect(() => {
+    onUnlockedRef.current = options.onUnlocked;
+  }, [options.onUnlocked]);
 
   useIsomorphicEffect(() => {
     if (unlocked) return;

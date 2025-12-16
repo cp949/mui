@@ -1,7 +1,4 @@
-import { useRef } from 'react';
-
-/** 상수 값을 저장하는 컨테이너 타입 */
-type ResultBox<T> = { v: T };
+import { useState } from 'react';
 
 /**
  * 렉더링 전체에 걸쳐 동일한 값을 유지하는 React 훅입니다.
@@ -41,11 +38,8 @@ type ResultBox<T> = { v: T };
  * ```
  */
 export function useConstant<T>(fn: () => T): T {
-  const ref = useRef<ResultBox<T> | null>(null);
-
-  if (!ref.current) {
-    ref.current = { v: fn() };
-  }
-
-  return ref.current.v;
+  // Store once per mount, and avoid ref access during render to satisfy react-hooks/refs.
+  // Note: In React StrictMode (dev), initializers may run more than once due to double-invocation.
+  const [value] = useState(fn);
+  return value;
 }

@@ -4,6 +4,9 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "e2e": "pnpm e2e:react19 && pnpm e2e:react18",
+    "e2e:react19": "pnpm -C apps/e2e-test test:e2e",
+    "e2e:react18": "pnpm -C apps/e2e-test-react18 test:e2e",
     "lint": "turbo lint",
     "format": "turbo format",
     "typecheck": "turbo typecheck",
@@ -12,11 +15,11 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "prettier": "^3.6.2",
-    "turbo": "^2.5.4"
+    "prettier": "^3.7.4",
+    "turbo": "^2.6.3"
   },
-  "packageManager": "pnpm@10.17.1",
+  "packageManager": "pnpm@10.26.0",
   "engines": {
     "node": ">=18"
-  },
+  }
 }

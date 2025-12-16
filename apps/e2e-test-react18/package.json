@@ -1,0 +1,26 @@
+{
+  "name": "@cp949/e2e-test-react18",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "E2E_RUNNER_DIR=$PWD E2E_PORT=4174 E2E_OUT_DIR=dist-react18 vite --config ../e2e-test/vite.config.ts ../e2e-test",
+    "build": "E2E_RUNNER_DIR=$PWD E2E_PORT=4174 E2E_OUT_DIR=dist-react18 vite build --config ../e2e-test/vite.config.ts ../e2e-test",
+    "preview": "E2E_RUNNER_DIR=$PWD E2E_PORT=4174 E2E_OUT_DIR=dist-react18 vite preview --config ../e2e-test/vite.config.ts ../e2e-test --host 127.0.0.1 --port 4174 --strictPort",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "lint": "echo \"(runner) lint handled by apps/e2e-test\"",
+    "typecheck": "echo \"(runner) typecheck handled by apps/e2e-test\""
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^25.0.2",
+    "vite": "^7.3.0"
+  }
+}
+
+
