@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { useAudioUnlocked } from "@cp949/mui/hooks";
+import { useAudioUnlocked } from '@cp949/mui/hooks';
+import { useRef, useState } from 'react';
 
 export function UseAudioUnlockedPage() {
   const [callbackCount, setCallbackCount] = useState(0);
@@ -13,32 +13,32 @@ export function UseAudioUnlockedPage() {
   });
 
   return (
-    <section className="page" data-testid="page:useAudioUnlocked">
-      <h1 className="h1">useAudioUnlocked</h1>
-      <p className="desc">
+    <section className='page' data-testid='page:useAudioUnlocked'>
+      <h1 className='h1'>useAudioUnlocked</h1>
+      <p className='desc'>
         Goal: a user interaction should flip the stored unlocked state and invoke the callback.
       </p>
 
-      <div className="card">
-        <div className="row">
-          <div className="k">unlocked</div>
-          <div className="v" data-testid="useAudioUnlocked:unlocked">
+      <div className='card'>
+        <div className='row'>
+          <div className='k'>unlocked</div>
+          <div className='v' data-testid='useAudioUnlocked:unlocked'>
             {String(unlocked)}
           </div>
         </div>
-        <div className="row">
-          <div className="k">onUnlocked calls</div>
-          <div className="v" data-testid="useAudioUnlocked:calls">
+        <div className='row'>
+          <div className='k'>onUnlocked calls</div>
+          <div className='v' data-testid='useAudioUnlocked:calls'>
             {callbackCount}
           </div>
         </div>
       </div>
 
-      <div className="buttons">
+      <div className='buttons'>
         <button
-          type="button"
-          className="btn"
-          data-testid="useAudioUnlocked:tap"
+          type='button'
+          className='btn'
+          data-testid='useAudioUnlocked:tap'
           onClick={() => {
             // no-op; hook listens on document capture and should unlock on this click.
           }}
@@ -46,11 +46,11 @@ export function UseAudioUnlockedPage() {
           Tap (unlock)
         </button>
         <button
-          type="button"
-          className="btn"
-          data-testid="useAudioUnlocked:clearStorage"
+          type='button'
+          className='btn'
+          data-testid='useAudioUnlocked:clearStorage'
           onClick={() => {
-            sessionStorage.removeItem("audio-unlocked");
+            sessionStorage.removeItem('audio-unlocked');
             window.location.reload();
           }}
         >
@@ -60,5 +60,3 @@ export function UseAudioUnlockedPage() {
     </section>
   );
 }
-
-

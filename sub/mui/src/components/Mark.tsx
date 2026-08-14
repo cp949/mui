@@ -70,7 +70,7 @@ export const Mark = forwardRef<HTMLElement, MarkProps>((props, ref) => {
   return (
     <Box
       className={clsx('Mark-root', className)}
-      component="mark"
+      component='mark'
       ref={ref}
       sx={[
         {

@@ -8,8 +8,9 @@
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
     "typecheck": "tsc --pretty --noEmit",
-    "lint": "eslint .",
-    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed"
@@ -24,14 +25,11 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@playwright/test": "^1.62.1",
-    "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.0.5",
-    "eslint": "^9.39.5",
-    "prettier": "^3.9.6",
     "typescript": "^5.9.3",
     "vite": "^8.2.1"
   }

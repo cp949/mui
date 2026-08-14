@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import { useComposedRefs } from '../hooks/useComposedRefs.js';
 
 export interface FileButtonProps<Multiple extends boolean = false> {
@@ -156,22 +156,22 @@ export const FileButton: FileButtonComponent = forwardRef<HTMLInputElement, File
     };
 
     // 파일 선택 상태를 초기화합니다.
-    const reset = () => {
+    const reset = useCallback(() => {
       if (inputRef.current) {
         inputRef.current.value = '';
       }
-    };
+    }, []);
 
     // Keep ref assignment out of render.
     useEffect(() => {
       assignRef(resetRef, reset);
-    }, [resetRef]);
+    }, [resetRef, reset]);
     return (
       <>
         {children({ onClick })}
         <input
           style={{ display: 'none' }}
-          type="file"
+          type='file'
           accept={accept}
           multiple={multiple}
           onChange={handleChange}

@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import { type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { type ReactNode, useEffect, useRef, useState } from 'react';
 
 /**
  * DebouncedRender 컴포넌트의 속성을 정의하는 인터페이스입니다.
@@ -72,12 +72,6 @@ export const DebouncedRender: FC<DebouncedRenderProps> = ({
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastCallTimeRef = useRef<number | null>(null);
 
-  const closeTimer = useCallback(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-  }, []);
-
   useEffect(() => {
     const now = Date.now();
     const invoke = () => {
@@ -113,7 +107,7 @@ export const DebouncedRender: FC<DebouncedRenderProps> = ({
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [children, leading, trailing, maxWait, closeTimer]);
+  }, [children, leading, trailing, maxWait]);
 
   return <>{content}</>;
 };

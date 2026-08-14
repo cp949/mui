@@ -167,7 +167,7 @@ export const Spoiler = forwardRef<HTMLElement, SpoilerProps>((props, ref) => {
     >
       {hasSpoiler && (
         <StyledMoreButton
-          component="button"
+          component='button'
           ref={controlRef}
           onClick={() => {
             setShowState(!show);
@@ -180,7 +180,7 @@ export const Spoiler = forwardRef<HTMLElement, SpoilerProps>((props, ref) => {
       )}
       <StyledContent
         data-reduce-motion
-        role="region"
+        role='region'
         id={regionId}
         transitionDuration={transitionDuration}
         style={{

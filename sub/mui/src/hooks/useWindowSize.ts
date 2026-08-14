@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { isBrowser } from '../util/misc-utils.js';
 import { useRafState } from './useRafState.js';
 
@@ -88,7 +88,12 @@ export const useWindowSize = ({
     height: isBrowser ? window.innerHeight : initialHeight,
   });
 
-  useEffect((): (() => void) | void => {
+  // 매 렌더의 최신 onChange를 추적 (effect는 마운트 시 1회만 등록되므로 클로저가 stale해지는 것을 방지)
+  const onChangeRef = useRef(onChange);
+  onChangeRef.current = onChange;
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: onChange는 onChangeRef로 최신값을 참조하고, setState(setRafState)는 참조가 항상 안정적임
+  useEffect((): (() => void) | undefined => {
     // Only run the effect on the browser (to avoid issues with SSR)
     if (isBrowser) {
       const handler = () => {
@@ -102,7 +107,7 @@ export const useWindowSize = ({
         });
 
         // If an onChange callback is provided, call it with the new dimensions
-        if (onChange) onChange(width, height);
+        onChangeRef.current?.(width, height);
       };
 
       // Add event listener for the resize event
@@ -113,7 +118,6 @@ export const useWindowSize = ({
         window.removeEventListener('resize', handler);
       };
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Return the current window size (width and height)

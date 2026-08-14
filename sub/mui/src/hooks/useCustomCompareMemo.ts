@@ -1,5 +1,5 @@
-import { useMemo, useRef, type DependencyList } from 'react';
-import { type DependenciesComparator } from './types.js';
+import { type DependencyList, useMemo, useRef } from 'react';
+import type { DependenciesComparator } from './types.js';
 
 /**
  * 사용자 정의 비교 함수를 사용하여 의존성 변화를 검사하는 useMemo 훅입니다.
@@ -60,6 +60,6 @@ export const useCustomCompareMemo = <T, Deps extends DependencyList>(
     dependencies.current = deps;
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // biome-ignore lint/correctness/useExhaustiveDependencies: dependencies.current는 comparator로 비교/갱신되는 동적 의존성 배열이라 정적 분석 대상이 아님
   return useMemo<T>(factory, dependencies.current);
 };

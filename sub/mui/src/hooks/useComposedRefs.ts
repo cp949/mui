@@ -38,7 +38,10 @@ function setRef<T>(ref: PossibleRef<T>, value: T) {
  * @returns 모든 ref에 값을 설정하는 함수
  */
 function composeRefs<T>(...refs: PossibleRef<T>[]) {
-  return (node: T) => refs.forEach((ref) => setRef(ref, node));
+  return (node: T) =>
+    refs.forEach((ref) => {
+      setRef(ref, node);
+    });
 }
 
 /**
@@ -84,7 +87,7 @@ function composeRefs<T>(...refs: PossibleRef<T>[]) {
  * ```
  */
 function useComposedRefs<T>(...refs: PossibleRef<T>[]): (node: T | null) => void {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // biome-ignore lint/correctness/useExhaustiveDependencies: refs는 가변 인자를 그대로 전달하는 동적 의존성 배열이라 정적 분석 대상이 아님
   return useCallback(composeRefs(...refs), refs);
 }
 

@@ -1,9 +1,9 @@
-import React, { useMemo, useState } from "react";
-import { useDebouncedCallback } from "@cp949/mui/hooks";
+import { useDebouncedCallback } from '@cp949/mui/hooks';
+import { useMemo, useState } from 'react';
 
 export function UseDebouncedCallbackPage() {
-  const [typed, setTyped] = useState("");
-  const [committed, setCommitted] = useState("");
+  const [typed, setTyped] = useState('');
+  const [committed, setCommitted] = useState('');
   const [commitCount, setCommitCount] = useState(0);
 
   const debouncedCommit = useDebouncedCallback(
@@ -20,38 +20,40 @@ export function UseDebouncedCallbackPage() {
   }, [typed, committed, commitCount]);
 
   return (
-    <section className="page" data-testid="page:useDebouncedCallback">
-      <h1 className="h1">useDebouncedCallback</h1>
-      <p className="desc">Goal: only the last call within the wait window should commit; cancel should prevent commit.</p>
+    <section className='page' data-testid='page:useDebouncedCallback'>
+      <h1 className='h1'>useDebouncedCallback</h1>
+      <p className='desc'>
+        Goal: only the last call within the wait window should commit; cancel should prevent commit.
+      </p>
 
-      <div className="card">
-        <div className="row">
-          <div className="k">typed</div>
-          <div className="v" data-testid="useDebouncedCallback:typed">
-            {status.typed || "-"}
+      <div className='card'>
+        <div className='row'>
+          <div className='k'>typed</div>
+          <div className='v' data-testid='useDebouncedCallback:typed'>
+            {status.typed || '-'}
           </div>
         </div>
-        <div className="row">
-          <div className="k">committed</div>
-          <div className="v" data-testid="useDebouncedCallback:committed">
-            {status.committed || "-"}
+        <div className='row'>
+          <div className='k'>committed</div>
+          <div className='v' data-testid='useDebouncedCallback:committed'>
+            {status.committed || '-'}
           </div>
         </div>
-        <div className="row">
-          <div className="k">commitCount</div>
-          <div className="v" data-testid="useDebouncedCallback:commitCount">
+        <div className='row'>
+          <div className='k'>commitCount</div>
+          <div className='v' data-testid='useDebouncedCallback:commitCount'>
             {status.commitCount}
           </div>
         </div>
       </div>
 
-      <div className="buttons">
+      <div className='buttons'>
         <input
-          className="btn"
+          className='btn'
           style={{ minWidth: 280 }}
-          data-testid="useDebouncedCallback:input"
+          data-testid='useDebouncedCallback:input'
           value={typed}
-          placeholder="Type here..."
+          placeholder='Type here...'
           onChange={(e) => {
             const next = e.currentTarget.value;
             setTyped(next);
@@ -59,21 +61,21 @@ export function UseDebouncedCallbackPage() {
           }}
         />
         <button
-          type="button"
-          className="btn"
-          data-testid="useDebouncedCallback:cancel"
+          type='button'
+          className='btn'
+          data-testid='useDebouncedCallback:cancel'
           onClick={() => debouncedCommit.cancel()}
         >
           Cancel pending
         </button>
         <button
-          type="button"
-          className="btn"
-          data-testid="useDebouncedCallback:reset"
+          type='button'
+          className='btn'
+          data-testid='useDebouncedCallback:reset'
           onClick={() => {
             debouncedCommit.cancel();
-            setTyped("");
-            setCommitted("");
+            setTyped('');
+            setCommitted('');
             setCommitCount(0);
           }}
         >
@@ -83,5 +85,3 @@ export function UseDebouncedCallbackPage() {
     </section>
   );
 }
-
-

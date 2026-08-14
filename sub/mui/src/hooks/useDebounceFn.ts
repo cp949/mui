@@ -50,6 +50,7 @@ type noop = (...args: any[]) => any;
 export function useDebounceFn<T extends noop>(fn: T, options?: DebounceOptions) {
   const fnRef = useLatest(fn);
   const wait = options?.wait ?? 1000;
+  // biome-ignore lint/correctness/useExhaustiveDependencies: fnRef는 최신값을 참조하는 ref라 안전하며, options/wait는 최초 생성 시점 값으로 고정하려는 의도(값이 바뀔 때마다 디바운스 함수를 재생성하지 않음)
   const debounced = useMemo(
     () =>
       debounce(
@@ -59,7 +60,6 @@ export function useDebounceFn<T extends noop>(fn: T, options?: DebounceOptions) 
         wait,
         options,
       ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 

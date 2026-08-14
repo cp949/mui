@@ -1,4 +1,4 @@
-import { useEffect, useState, type DependencyList, type EffectCallback } from 'react';
+import { type DependencyList, type EffectCallback, useEffect, useState } from 'react';
 import { useDebounceFn } from './useDebounceFn.js';
 import { useUpdateEffect } from './useUpdateEffect.js';
 
@@ -66,7 +66,7 @@ export function useDebounceEffect(
 
   useEffect(() => {
     return run();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // biome-ignore lint/correctness/useExhaustiveDependencies: deps는 호출자가 전달하는 동적 의존성 배열이라 정적 분석 대상이 아님
   }, deps);
 
   useUpdateEffect(effect, [flag]);

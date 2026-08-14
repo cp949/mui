@@ -25,6 +25,6 @@ import { useEffect } from 'react';
  * @returns 없음. `useEffect`와 동일하게 동작하며, 반환값은 없습니다.
  */
 export const useEffectOnce = (effect: EffectCallback) => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // biome-ignore lint/correctness/useExhaustiveDependencies: 마운트 시 1회만 실행하는 것이 이 훅의 목적이므로 effect를 의존성에 넣지 않음
   useEffect(effect, []);
 };

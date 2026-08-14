@@ -51,7 +51,7 @@ export function overrideProps<T extends Record<string, any>, R extends Record<st
     const filteredCurrent = Object.fromEntries(
       Object.entries(current).filter(([_, value]) => value !== undefined),
     );
-    return { ...acc, ...filteredCurrent };
+    return Object.assign(acc, filteredCurrent);
   }, {});
 
   // 최종 병합된 결과 반환

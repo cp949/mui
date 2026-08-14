@@ -64,14 +64,17 @@ export function useThrottledCallbackWithClearTimeout<T extends (...args: any[]) 
   );
 
   // 타이머가 동작하는 동안 실행되는 콜백
-  const timerCallback = useCallback(function timerCallback() {
-    if (latestInArgsRef.current && latestInArgsRef.current !== latestOutArgsRef.current) {
-      callThrottledCallback(...latestInArgsRef.current); // 새로운 인자 기반으로 콜백 호출
-      timeoutRef.current = window.setTimeout(timerCallback, waitRef.current); // 다음 타이머 설정
-    } else {
-      active.current = true; // 쓰로틀링 상태 활성화
-    }
-  }, [callThrottledCallback]);
+  const timerCallback = useCallback(
+    function timerCallback() {
+      if (latestInArgsRef.current && latestInArgsRef.current !== latestOutArgsRef.current) {
+        callThrottledCallback(...latestInArgsRef.current); // 새로운 인자 기반으로 콜백 호출
+        timeoutRef.current = window.setTimeout(timerCallback, waitRef.current); // 다음 타이머 설정
+      } else {
+        active.current = true; // 쓰로틀링 상태 활성화
+      }
+    },
+    [callThrottledCallback],
+  );
 
   // 쓰로틀링된 콜백 함수
   const throttled = useCallback(

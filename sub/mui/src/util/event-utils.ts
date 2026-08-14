@@ -92,7 +92,7 @@ export const isEscapeKeyEvent = (e: React.KeyboardEvent): boolean => {
  * ```
  */
 export const isTouchEvent = (event: MouseEvent | TouchEvent): event is TouchEvent => {
-  return Boolean((event as TouchEvent).touches && (event as TouchEvent).touches.length);
+  return Boolean((event as TouchEvent).touches?.length);
 };
 
 /**
@@ -138,7 +138,7 @@ export const blurEventTarget = (event: any, delay = -1) => {
   const target = event.target;
   if (!target) return;
   if (typeof target !== 'object') return;
-  if (typeof target['blur'] !== 'function') return;
+  if (typeof target.blur !== 'function') return;
   if (delay >= 0) {
     setTimeout(() => {
       event.target.blur();

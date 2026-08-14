@@ -40,7 +40,7 @@ export function useThrottledValue<T>(value: T, wait: number) {
   }, [throttledSetValue, value]);
 
   // 컴포넌트 언마운트 시 타이머 정리
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // biome-ignore lint/correctness/useExhaustiveDependencies: clearTimeout은 ref만 참조하는 클로저라 마운트 시 1회 등록으로 충분
   useEffect(() => clearTimeout, []);
 
   // 쓰로틀링된 값 반환

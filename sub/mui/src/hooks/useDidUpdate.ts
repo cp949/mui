@@ -63,6 +63,6 @@ export function useDidUpdate(fn: EffectCallback, dependencies?: DependencyList) 
 
     mounted.current = true;
     return undefined;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // biome-ignore lint/correctness/useExhaustiveDependencies: dependencies는 호출자가 전달하는 동적 의존성 배열이라 정적 분석 대상이 아님
   }, dependencies);
 }

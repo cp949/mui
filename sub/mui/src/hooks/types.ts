@@ -1,4 +1,4 @@
-import { type DependencyList } from 'react';
+import type { DependencyList } from 'react';
 
 /**
  * Observable 패턴을 구현하는 인터페이스입니다.

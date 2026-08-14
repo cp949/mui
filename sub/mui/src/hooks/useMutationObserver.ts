@@ -54,8 +54,7 @@ export function useMutationObserver<T extends HTMLElement = any>(
     return () => {
       observer.current?.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initOptions]);
+  }, [initOptions, target]);
 
   // DOM 요소를 바인딩할 수 있는 ref를 반환
   return ref;

@@ -53,7 +53,7 @@ const isPrimitive = (val: any) => val !== Object(val);
  */
 export const useDeepCompareEffect = (effect: EffectCallback, deps: DependencyList) => {
   if ((process.env as any).NODE_ENV !== 'production') {
-    if (!(deps instanceof Array) || !deps.length) {
+    if (!Array.isArray(deps) || !deps.length) {
       console.warn(
         '`useDeepCompareEffect` should not be used with no dependencies. Use React.useEffect instead.',
       );

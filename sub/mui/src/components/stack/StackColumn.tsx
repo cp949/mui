@@ -44,7 +44,7 @@ export const StackColumn = forwardRef<HTMLDivElement, StackColumnProps>(
   ({ center = false, alignItems, justifyContent, children, ...props }, ref) => {
     return (
       <Stack
-        direction="column"
+        direction='column'
         alignItems={center ? 'center' : alignItems}
         justifyContent={center ? 'center' : justifyContent}
         {...props}

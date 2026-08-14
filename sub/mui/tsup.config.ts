@@ -1,6 +1,6 @@
 import { defineConfig } from 'tsup';
 
-export default defineConfig((options) => {
+export default defineConfig((_options) => {
   return {
     dts: true,
     format: ['esm', 'cjs'],
@@ -15,12 +15,6 @@ export default defineConfig((options) => {
     splitting: true,
     sourcemap: true,
     clean: false,
-    external: [
-      "react",
-      "react/jsx-runtime",
-      "@mui/material",
-      "@mui/system",
-      "react-dom"
-    ],
+    external: ['react', 'react/jsx-runtime', '@mui/material', '@mui/system', 'react-dom'],
   };
 });

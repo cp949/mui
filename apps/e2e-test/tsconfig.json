@@ -6,5 +6,3 @@
   },
   "include": ["src", "tests", "vite.config.ts", "playwright.config.ts", "eslint.config.mjs"]
 }
-
-

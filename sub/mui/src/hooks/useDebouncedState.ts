@@ -50,6 +50,7 @@ export function useDebouncedState<T = any>(
   const clearTimeout = () => window.clearTimeout(timeoutRef.current!);
 
   // 컴포넌트 언마운트 시 타이머를 정리.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: clearTimeout은 ref(timeoutRef)만 참조하는 클로저라 마운트 시 1회 등록으로 충분
   useEffect(() => clearTimeout, []);
 
   /**
@@ -57,6 +58,7 @@ export function useDebouncedState<T = any>(
    * - `leading` 옵션이 활성화된 경우, 첫 번째 업데이트는 즉시 발생.
    * - 이후 업데이트는 `wait` 시간만큼 지연.
    */
+  // biome-ignore lint/correctness/useExhaustiveDependencies: clearTimeout은 ref(timeoutRef)만 참조하는 클로저라 의존성에 넣지 않아도 안전
   const debouncedSetValue = useCallback(
     (newValue: SetStateAction<T>) => {
       clearTimeout(); // 기존 타이머를 정리.

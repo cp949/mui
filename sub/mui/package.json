@@ -8,8 +8,9 @@
   "scripts": {
     "build": "tsup --clean",
     "dev": "npm run build -- --watch",
-    "lint": "eslint .",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
     "typecheck": "tsc --pretty --noEmit"
   },
   "dependencies": {
@@ -19,14 +20,11 @@
   "devDependencies": {
     "@mui/material": "^7.3.6",
     "@mui/system": "^7.3.6",
-    "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/lodash.throttle": "^4.1.9",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "eslint": "^9.39.5",
-    "prettier": "^3.9.6",
     "react": "^19.2.8",
     "rxjs": "^7.8.2",
     "shelljs": "^0.10.0",

@@ -56,6 +56,6 @@ export function useClosableEffect(callback: Callback, deps: unknown[]) {
       }
       closables.close();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // biome-ignore lint/correctness/useExhaustiveDependencies: deps는 호출자가 전달하는 동적 의존성 배열이라 정적 분석 대상이 아님
   }, deps);
 }

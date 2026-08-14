@@ -39,7 +39,7 @@ export function useThrottledState<T = any>(
   const [setThrottledValue, clearTimeout] = useThrottledCallbackWithClearTimeout(setValue, wait);
 
   // 컴포넌트 언마운트 시 타이머를 정리
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // biome-ignore lint/correctness/useExhaustiveDependencies: clearTimeout은 ref만 참조하는 클로저라 마운트 시 1회 등록으로 충분
   useEffect(() => clearTimeout, []);
 
   // 현재 상태 값과 쓰로틀링된 업데이트 함수 반환

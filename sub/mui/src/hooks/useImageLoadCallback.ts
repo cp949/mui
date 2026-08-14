@@ -53,8 +53,9 @@ export function useImageLoadCallback(
   const onErrorRef = useRef(options.onError);
   onErrorRef.current = options.onError;
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshToken은 콜백 내부에서 값을 읽지 않고 src 변경 감지 시 effect를 재실행시키는 트리거 용도로만 사용됨
   useEffect(() => {
-    if (!img || !img.src) return;
+    if (!img?.src) return;
 
     if (img.complete) {
       // 이미지가 이미 로드된 상태
@@ -93,7 +94,6 @@ export function useImageLoadCallback(
       img.removeEventListener('load', handleLoadSuccess);
       img.removeEventListener('error', handleLoadFailed);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [img, refreshToken, keepListening, ...deps]);
 
   // keepListening=true인 경우에는 src 속성을 감시합니다.

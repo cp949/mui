@@ -64,8 +64,7 @@ export function useDebouncedValue<T = any>(
         }, wait); // 지정된 `wait` 시간 이후 실행
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, options.leading, wait]); // `value`, `leading`, `wait` 변경 시 실행
+  }, [value, options.leading, wait, cancel]); // `value`, `leading`, `wait` 변경 시 실행
 
   /**
    * 컴포넌트가 마운트되었을 때 실행됩니다.

@@ -135,11 +135,11 @@ pnpm --filter @cp949/mui format
 │   │   │   ├── persistence/    # 스토리지 상태 관리
 │   │   │   └── misc/           # debounce, deep equality 유틸리티
 │   │   └── tsup.config.ts      # 빌드 설정
-│   ├── eslint-config/          # 공유 ESLint 설정 (@repo/eslint-config)
 │   └── typescript-config/      # 공유 TypeScript 설정 (@repo/typescript-config)
 ├── apps/
 │   ├── e2e-test/                # E2E 테스트(React 19) - Vite + Playwright
 │   └── e2e-test-react18/        # E2E 러너(React 18) - 동일 소스 기반 실행
+├── biome.json                  # Biome 설정 (lint + format)
 ├── turbo.json                  # Turbo 설정
 ├── package.json                # 루트 워크스페이스
 └── pnpm-workspace.yaml        # 워크스페이스 설정

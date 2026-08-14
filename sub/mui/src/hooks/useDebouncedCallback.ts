@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 
 /**
  * 디바운스된 콜백 훅의 옵션 인터페이스입니다.
@@ -143,14 +143,13 @@ export function useDebouncedCallback<T extends (...args: any[]) => void>(
   return useMemo(() => {
     // Keep render immutable (no property writes), while preserving the legacy API:
     // a callable function with a `.cancel()` property.
-    const target = function () {
+    const target = () => {
       // The target is never called directly; `apply` trap handles invocation.
     };
 
     // NOTE: react-hooks/refs is overly conservative here and flags Proxy creation as "ref access during render".
     // We intentionally keep this API (function + .cancel) without mutating values in render, and rely on E2E tests
     // to guarantee behavior.
-    /* eslint-disable react-hooks/refs */
     const proxy = new Proxy(target as unknown as T, {
       get(_target, prop) {
         if (prop === 'cancel') return cancel;

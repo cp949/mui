@@ -1,5 +1,4 @@
-import type { FC } from 'react';
-import { type ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 /**
  * Show 컴포넌트의 속성을 정의하는 인터페이스입니다.

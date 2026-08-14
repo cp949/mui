@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useConstant } from "@cp949/mui/hooks";
+import { useConstant } from '@cp949/mui/hooks';
+import { useState } from 'react';
 
 let initCalls = 0;
 
@@ -12,45 +12,45 @@ export function UseConstantPage() {
   });
 
   return (
-    <section className="page" data-testid="page:useConstant">
-      <h1 className="h1">useConstant</h1>
-      <p className="desc">
-        Goal: initializer should not re-run on state-driven re-renders (React dev StrictMode may call it more than once
-        on initial mount; this page asserts it stays stable after that).
+    <section className='page' data-testid='page:useConstant'>
+      <h1 className='h1'>useConstant</h1>
+      <p className='desc'>
+        Goal: initializer should not re-run on state-driven re-renders (React dev StrictMode may
+        call it more than once on initial mount; this page asserts it stays stable after that).
       </p>
 
-      <div className="card">
-        <div className="row">
-          <div className="k">rerenders</div>
-          <div className="v" data-testid="useConstant:rerenders">
+      <div className='card'>
+        <div className='row'>
+          <div className='k'>rerenders</div>
+          <div className='v' data-testid='useConstant:rerenders'>
             {rerenders}
           </div>
         </div>
-        <div className="row">
-          <div className="k">initCalls (module)</div>
-          <div className="v" data-testid="useConstant:initCalls">
+        <div className='row'>
+          <div className='k'>initCalls (module)</div>
+          <div className='v' data-testid='useConstant:initCalls'>
             {initCalls}
           </div>
         </div>
-        <div className="row">
-          <div className="k">createdAtCall</div>
-          <div className="v" data-testid="useConstant:createdAtCall">
+        <div className='row'>
+          <div className='k'>createdAtCall</div>
+          <div className='v' data-testid='useConstant:createdAtCall'>
             {constantValue.createdAtCall}
           </div>
         </div>
-        <div className="row">
-          <div className="k">id</div>
-          <div className="v" data-testid="useConstant:id">
+        <div className='row'>
+          <div className='k'>id</div>
+          <div className='v' data-testid='useConstant:id'>
             {constantValue.id}
           </div>
         </div>
       </div>
 
-      <div className="buttons">
+      <div className='buttons'>
         <button
-          type="button"
-          className="btn"
-          data-testid="useConstant:rerender"
+          type='button'
+          className='btn'
+          data-testid='useConstant:rerender'
           onClick={() => setRerenders((n) => n + 1)}
         >
           Force re-render
@@ -59,5 +59,3 @@ export function UseConstantPage() {
     </section>
   );
 }
-
-
