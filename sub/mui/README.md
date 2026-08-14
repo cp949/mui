@@ -4,12 +4,12 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A comprehensive React component library built on Material-UI, providing 50+ production-ready components and 67+ custom hooks for modern React applications.
+A comprehensive React component library built on Material-UI, providing 50+ production-ready components and 65+ custom hooks for modern React applications.
 
 ## ✨ Features
 
 - **🎨 50+ Components**: Layout, interactive, responsive, and utility components
-- **⚡ 67+ Custom Hooks**: State management, event handling, storage, observables, and more
+- **⚡ 65+ Custom Hooks**: State management, event handling, storage, observables, and more
 - **📱 Responsive Design**: Built-in breakpoint components and utilities
 - **🔧 TypeScript First**: Full TypeScript support with comprehensive type definitions
 - **⚛️ React 18/19**: Compatible with both React 18 and 19
@@ -314,8 +314,8 @@ const MyComponent: React.FC<FlexRowProps> = ({ spacing, children, ...props }) =>
 
 - **React**: ^18.0.0 || ^19.0.0
 - **Material-UI**: ^7.0.0
-- **TypeScript**: ^5.0.0 (recommended)
-- **Node.js**: >=18.0.0
+- **TypeScript**: ^6.0.0 (recommended)
+- **Node.js**: >=20.19.0
 
 ## 🧪 E2E Tests (React 18 + React 19)
 

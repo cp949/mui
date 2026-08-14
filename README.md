@@ -8,8 +8,8 @@ CP949 MUI React component library built with Turbo monorepo.
 
 ## 주요 기능
 
-- **컴포넌트**: 레이아웃, 버튼, 반응형 컴포넌트 등 52개 컴포넌트
-- **훅**: 상태 관리, 이벤트 처리, 스토리지, 옵저버블 등 67개 커스텀 훅
+- **컴포넌트**: 레이아웃, 버튼, 반응형 컴포넌트 등 50개 컴포넌트
+- **훅**: 상태 관리, 이벤트 처리, 스토리지, 옵저버블 등 65개 커스텀 훅
 - **헬퍼**: MUI CSS 변수, 미디어 쿼리 유틸리티
 - **유틸리티**: 이벤트 처리, refs 합성, 타입 유틸리티
 - **EventEmitter**: EventEmitter3 래퍼
@@ -47,8 +47,8 @@ function MyComponent() {
 
 - **React**: ^18 || ^19
 - **Material-UI**: ^7
-- **TypeScript**: ^5.9
-- **Node.js**: ^18
+- **TypeScript**: ^6.0
+- **Node.js**: ^20.19
 - **pnpm**: ^10
 
 ### ⚠️ React 18 + MUI v7 사용자 주의사항
@@ -72,7 +72,7 @@ React 18과 MUI v7을 함께 사용하는 경우, `react-is` 버전 불일치로
 
 ### 사전 요구사항
 
-- Node.js 18+
+- Node.js 20.19+
 - pnpm 10+
 
 ### 개발 시작
@@ -125,10 +125,10 @@ pnpm --filter @cp949/mui format
 
 ```
 ├── sub/
-│   ├── mui/                     # 메인 라이브러리 (@cp949/mui) - 153 TypeScript 파일
+│   ├── mui/                     # 메인 라이브러리 (@cp949/mui) - 152 TypeScript 파일
 │   │   ├── src/
-│   │   │   ├── components/      # 52개 React 컴포넌트
-│   │   │   ├── hooks/          # 67개 커스텀 훅
+│   │   │   ├── components/      # 50개 React 컴포넌트
+│   │   │   ├── hooks/          # 65개 커스텀 훅
 │   │   │   ├── helper/         # MUI 헬퍼 유틸리티
 │   │   │   ├── util/           # 공통 유틸리티
 │   │   │   ├── eventemitter/   # EventEmitter3 래퍼
