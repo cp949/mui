@@ -52,7 +52,10 @@ const isPrimitive = (val: any) => val !== Object(val);
  * @returns 없음. 이 훅은 `useEffect`와 동일하게 부수 효과를 실행하며, 반환값은 없습니다.
  */
 export const useDeepCompareEffect = (effect: EffectCallback, deps: DependencyList) => {
-  if ((process.env as any).NODE_ENV !== 'production') {
+  if (
+    (globalThis as typeof globalThis & { process?: { env?: { NODE_ENV?: string } } }).process?.env
+      ?.NODE_ENV !== 'production'
+  ) {
     if (!Array.isArray(deps) || !deps.length) {
       console.warn(
         '`useDeepCompareEffect` should not be used with no dependencies. Use React.useEffect instead.',

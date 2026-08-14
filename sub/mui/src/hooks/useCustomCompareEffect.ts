@@ -61,7 +61,10 @@ export const useCustomCompareEffect = <TDeps extends DependencyList>(
   deps: TDeps,
   depsEqual: DepsEqualFnType<TDeps>,
 ) => {
-  if ((process.env as any).NODE_ENV !== 'production') {
+  if (
+    (globalThis as typeof globalThis & { process?: { env?: { NODE_ENV?: string } } }).process?.env
+      ?.NODE_ENV !== 'production'
+  ) {
     if (!Array.isArray(deps) || !deps.length) {
       console.warn(
         '`useCustomCompareEffect` should not be used with no dependencies. Use React.useEffect instead.',
