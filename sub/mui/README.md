@@ -6,19 +6,19 @@
 
 A comprehensive React component library built on Material-UI, providing 50+ production-ready components and 65+ custom hooks for modern React applications.
 
-## ✨ Features
+## Features
 
-- **🎨 50+ Components**: Layout, interactive, responsive, and utility components
-- **⚡ 65+ Custom Hooks**: State management, event handling, storage, observables, and more
-- **📱 Responsive Design**: Built-in breakpoint components and utilities
-- **🔧 TypeScript First**: Full TypeScript support with comprehensive type definitions
-- **⚛️ React 18/19**: Compatible with both React 18 and 19
-- **🏗️ Material-UI v7**: Built on top of the latest Material-UI
-- **📦 Tree Shakable**: Optimized bundle size with ES modules
-- **🎯 Multiple Entry Points**: Import from main, hooks, or helpers separately
-- **🚀 Zero Config**: All utilities included - no additional dependencies required
+- **50+ Components**: Layout, interactive, responsive, and utility components
+- **65+ Custom Hooks**: State management, event handling, storage, observables, and more
+- **Responsive Design**: Built-in breakpoint components and utilities
+- **TypeScript First**: Full TypeScript support with comprehensive type definitions
+- **React 18/19**: Compatible with both React 18 and 19
+- **Material-UI v7**: Built on top of the latest Material-UI
+- **Tree Shakable**: Optimized bundle size with ES modules
+- **Multiple Entry Points**: Import from main, hooks, or helpers separately
+- **Zero Config**: All utilities included - no additional dependencies required
 
-## 📦 Installation
+## Installation
 
 Just one command and you're ready to go! All utilities are included.
 
@@ -41,9 +41,9 @@ Make sure you have the following peer dependencies installed:
 npm install @mui/material @mui/system react rxjs
 ```
 
-> **✨ That's it!** No need to install additional utility libraries - everything you need is included.
+> **That's it!** No need to install additional utility libraries - everything you need is included.
 
-## 🚀 Quick Start
+## Quick Start
 
 ```tsx
 import React from 'react';
@@ -69,7 +69,7 @@ function MyApp() {
 }
 ```
 
-## 📚 Component Categories
+## Component Categories
 
 ### Layout Components
 
@@ -177,7 +177,7 @@ import { Portlet, Highlight, FileButton, CopyButtonWrapper } from '@cp949/mui';
 </Highlight>
 ```
 
-## 🎣 Custom Hooks
+## Custom Hooks
 
 ### State Management Hooks
 
@@ -265,7 +265,7 @@ useDeepCompareEffect(() => {
 }, [complexObject]);
 ```
 
-## 🛠️ Helper Utilities
+## Helper Utilities
 
 ```tsx
 import { muiCssVars, muiMediaQueries } from '@cp949/mui/helper';
@@ -280,7 +280,7 @@ const styles = {
 const isTablet = muiMediaQueries.up('md');
 ```
 
-## 📖 API Reference
+## API Reference
 
 ### Multiple Entry Points
 
@@ -310,14 +310,14 @@ const MyComponent: React.FC<FlexRowProps> = ({ spacing, children, ...props }) =>
 };
 ```
 
-## 🔧 Requirements
+## Requirements
 
 - **React**: ^18.0.0 || ^19.0.0
 - **Material-UI**: ^7.0.0
 - **TypeScript**: ^6.0.0 (recommended)
 - **Node.js**: >=20.19.0
 
-## 🧪 E2E Tests (React 18 + React 19)
+## E2E Tests (React 18 + React 19)
 
 This repo maintains Playwright E2E tests to protect runtime behavior of critical hooks/components across **both React 18 and React 19**.
 
@@ -339,14 +339,14 @@ Notes:
 - The shared test source lives in `apps/e2e-test/` (pages + Playwright specs).
 - `apps/e2e-test-react18/` is a lightweight runner that executes the same tests with React 18.
 
-## 📄 License
+## License
 
 MIT © [CP949](https://github.com/cp949)
 
-## 🤝 Contributing
+## Contributing
 
 This is an internal library. For bug reports or feature requests, please contact the maintainers.
 
 ---
 
-Built with ❤️ using Material-UI and TypeScript
+Built with Material-UI and TypeScript
