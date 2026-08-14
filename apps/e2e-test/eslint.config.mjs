@@ -9,6 +9,7 @@ export default [
     ignores: [
       "node_modules/",
       "dist/",
+      "dist-react*/",
       ".turbo/",
       "playwright-report/",
       "test-results/",
