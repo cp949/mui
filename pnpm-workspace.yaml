@@ -2,8 +2,8 @@ packages:
   - sub/*
   - apps/*
 
-onlyBuiltDependencies:
-  - esbuild
+allowBuilds:
+  esbuild: true
 
 overrides:
   esbuild: ^0.28.2
