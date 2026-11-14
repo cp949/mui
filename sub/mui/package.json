@@ -10,7 +10,7 @@
     "src"
   ],
   "scripts": {
-    "build": "tsup --clean",
+    "build": "tsdown",
     "dev": "npm run build -- --watch",
     "lint": "oxlint . && oxfmt --check .",
     "lint:fix": "oxlint --fix . && oxfmt --write .",
@@ -32,7 +32,7 @@
     "react": "^19.3.1",
     "rxjs": "^7.8.2",
     "shelljs": "^0.10.0",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.23.7",
     "typescript": "^6.0.3"
   },
   "peerDependencies": {

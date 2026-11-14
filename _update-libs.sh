@@ -17,6 +17,6 @@ LIBS=" $LIBS @mui/x-date-pickers@latest"
 LIBS=" $LIBS @mui/x-tree-view@latest"
 LIBS=" $LIBS globals@latest"
 LIBS=" $LIBS next@latest"
-LIBS=" $LIBS tsup@latest"
+LIBS=" $LIBS tsdown@latest"
 
 pnpm up -r ${LIBS}

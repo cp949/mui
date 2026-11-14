@@ -134,7 +134,7 @@ pnpm --filter @cp949/mui format
 │   │   │   ├── eventemitter/   # EventEmitter3 래퍼
 │   │   │   ├── persistence/    # 스토리지 상태 관리
 │   │   │   └── misc/           # debounce, deep equality 유틸리티
-│   │   └── tsup.config.ts      # 빌드 설정
+│   │   └── tsdown.config.ts    # 빌드 설정
 │   └── typescript-config/      # 공유 TypeScript 설정 (@repo/typescript-config)
 ├── apps/
 │   ├── e2e-test/                # E2E 테스트(React 19) - Vite + Playwright
