@@ -1,0 +1,30 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "useTabs": false,
+  "tabWidth": 2,
+  "printWidth": 100,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "quoteProps": "as-needed",
+  "trailingComma": "all",
+  "semi": true,
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "ignorePatterns": ["**/node_modules", "**/dist", "**/dist-react*", "**/.turbo", "**/coverage", "**/build", "**/out", "**/playwright-report", "**/test-results", "**/*.md", "pnpm-lock.yaml"],
+  "overrides": [
+    {
+      "files": ["**/*.json"],
+      "options": {
+        "printWidth": 200
+      }
+    },
+    {
+      "files": ["**/*.css"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ],
+  "sortPackageJson": false
+}

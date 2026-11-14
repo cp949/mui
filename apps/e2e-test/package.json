@@ -8,9 +8,9 @@
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
     "typecheck": "tsc --pretty --noEmit",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
-    "format": "biome format --write .",
+    "lint": "oxlint . && oxfmt --check .",
+    "lint:fix": "oxlint --fix . && oxfmt --write .",
+    "format": "oxfmt --write .",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed"

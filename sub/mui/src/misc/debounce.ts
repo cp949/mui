@@ -188,6 +188,7 @@ function debounce<T extends (...args: any[]) => any>(
     const isInvoking = shouldInvoke(time);
 
     lastArgs = args;
+    // oxlint-disable-next-line typescript/no-this-alias -- 호출 시점의 this를 trailing 호출에 전달하기 위해 보관함
     lastThis = this;
     lastCallTime = time;
 

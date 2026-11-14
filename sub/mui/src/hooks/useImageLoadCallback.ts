@@ -53,7 +53,7 @@ export function useImageLoadCallback(
   const onErrorRef = useRef(options.onError);
   onErrorRef.current = options.onError;
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: refreshToken은 콜백 내부에서 값을 읽지 않고 src 변경 감지 시 effect를 재실행시키는 트리거 용도로만 사용됨
+  /* oxlint-disable react-hooks/exhaustive-deps -- refreshToken은 콜백 내부에서 값을 읽지 않고 src 변경 감지 시 effect를 재실행시키는 트리거 용도로만 사용됨 */
   useEffect(() => {
     if (!img?.src) return;
 
@@ -95,6 +95,7 @@ export function useImageLoadCallback(
       img.removeEventListener('error', handleLoadFailed);
     };
   }, [img, refreshToken, keepListening, ...deps]);
+  /* oxlint-enable react-hooks/exhaustive-deps */
 
   // keepListening=true인 경우에는 src 속성을 감시합니다.
   useEffect(() => {

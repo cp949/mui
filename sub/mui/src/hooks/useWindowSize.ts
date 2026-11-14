@@ -92,7 +92,7 @@ export const useWindowSize = ({
   const onChangeRef = useRef(onChange);
   onChangeRef.current = onChange;
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: onChange는 onChangeRef로 최신값을 참조하고, setState(setRafState)는 참조가 항상 안정적임
+  /* oxlint-disable react-hooks/exhaustive-deps -- onChange는 onChangeRef로 최신값을 참조하고, setState(setRafState)는 참조가 항상 안정적임 */
   useEffect((): (() => void) | undefined => {
     // Only run the effect on the browser (to avoid issues with SSR)
     if (isBrowser) {
@@ -119,6 +119,7 @@ export const useWindowSize = ({
       };
     }
   }, []);
+  /* oxlint-enable react-hooks/exhaustive-deps */
 
   // Return the current window size (width and height)
   return state;

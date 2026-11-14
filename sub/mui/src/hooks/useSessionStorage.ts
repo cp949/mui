@@ -30,7 +30,7 @@ export const useSessionStorage = <T>(
       : options.deserializer
     : JSON.parse;
 
-  // biome-ignore lint/correctness/useHookAtTopLevel: isBrowser는 모듈 로드 시점에 고정되는 상수라 훅 호출 순서가 항상 동일하게 유지됨
+  // oxlint-disable-next-line react-hooks/rules-of-hooks -- isBrowser는 모듈 로드 시점에 고정되는 상수라 훅 호출 순서가 항상 동일하게 유지됨
   const initializer = useRef((key: string) => {
     try {
       const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify;
@@ -52,14 +52,13 @@ export const useSessionStorage = <T>(
     }
   });
 
-  // biome-ignore lint/correctness/useHookAtTopLevel: isBrowser는 모듈 로드 시점에 고정되는 상수라 훅 호출 순서가 항상 동일하게 유지됨
+  // oxlint-disable-next-line react-hooks/rules-of-hooks -- isBrowser는 모듈 로드 시점에 고정되는 상수라 훅 호출 순서가 항상 동일하게 유지됨
   const [state, setState] = useState<T | undefined>(() => initializer.current(key));
 
-  // biome-ignore lint/correctness/useHookAtTopLevel: isBrowser는 모듈 로드 시점에 고정되는 상수라 훅 호출 순서가 항상 동일하게 유지됨
+  // oxlint-disable-next-line react-hooks/rules-of-hooks -- isBrowser는 모듈 로드 시점에 고정되는 상수라 훅 호출 순서가 항상 동일하게 유지됨
   useLayoutEffect(() => setState(initializer.current(key)), [key]);
 
-  // biome-ignore lint/correctness/useHookAtTopLevel: isBrowser는 모듈 로드 시점에 고정되는 상수라 훅 호출 순서가 항상 동일하게 유지됨
-  // biome-ignore lint/correctness/useExhaustiveDependencies: deserializer/options는 훅 호출 시점에 고정되는 안정적인 값으로 간주함(매 렌더 재전달 시 재생성 방지). setState는 React가 참조 안정성을 보장하므로 생략
+  /* oxlint-disable react-hooks/rules-of-hooks, react-hooks/exhaustive-deps -- isBrowser는 모듈 로드 시점에 고정되는 상수라 훅 호출 순서가 항상 동일하게 유지됨. deserializer/options는 훅 호출 시점에 고정되는 안정적인 값으로 간주함(매 렌더 재전달 시 재생성 방지). setState는 React가 참조 안정성을 보장하므로 생략 */
   const set: Dispatch<SetStateAction<T | undefined>> = useCallback(
     (valOrFunc) => {
       try {
@@ -87,8 +86,9 @@ export const useSessionStorage = <T>(
     },
     [key, state],
   );
+  /* oxlint-enable react-hooks/rules-of-hooks, react-hooks/exhaustive-deps */
 
-  // biome-ignore lint/correctness/useHookAtTopLevel: isBrowser는 모듈 로드 시점에 고정되는 상수라 훅 호출 순서가 항상 동일하게 유지됨
+  // oxlint-disable-next-line react-hooks/rules-of-hooks -- isBrowser는 모듈 로드 시점에 고정되는 상수라 훅 호출 순서가 항상 동일하게 유지됨
   const remove = useCallback(() => {
     try {
       sessionStorage.removeItem(key);

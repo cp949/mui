@@ -76,7 +76,7 @@ export function useInterval(
     }
   };
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: start/stop은 ref만 참조하는 로컬 함수라 재생성돼도 안전하며, interval은 start() 내부 클로저로 캡처되어 값이 바뀔 때 재시작을 트리거하는 용도로 필요함
+  /* oxlint-disable react-hooks/exhaustive-deps -- start/stop은 ref만 참조하는 로컬 함수라 재생성돼도 안전하며, interval은 start() 내부 클로저로 캡처되어 값이 바뀔 때 재시작을 트리거하는 용도로 필요함 */
   useEffect(() => {
     fnRef.current = fn;
     if (active) {
@@ -84,13 +84,15 @@ export function useInterval(
     }
     return stop;
   }, [fn, active, interval]);
+  /* oxlint-enable react-hooks/exhaustive-deps */
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: 마운트 시 1회만 자동 시작하려는 의도이므로 autoInvoke/start를 의존성에 넣지 않음
+  /* oxlint-disable react-hooks/exhaustive-deps -- 마운트 시 1회만 자동 시작하려는 의도이므로 autoInvoke/start를 의존성에 넣지 않음 */
   useEffect(() => {
     if (autoInvoke) {
       start();
     }
   }, []);
+  /* oxlint-enable react-hooks/exhaustive-deps */
 
   return { start, stop, toggle, active };
 }

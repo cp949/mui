@@ -139,7 +139,8 @@ pnpm --filter @cp949/mui format
 ├── apps/
 │   ├── e2e-test/                # E2E 테스트(React 19) - Vite + Playwright
 │   └── e2e-test-react18/        # E2E 러너(React 18) - 동일 소스 기반 실행
-├── biome.json                  # Biome 설정 (lint + format)
+├── .oxlintrc.json              # oxlint 설정
+├── .oxfmtrc.json               # oxfmt 설정
 ├── turbo.json                  # Turbo 설정
 ├── package.json                # 루트 워크스페이스
 └── pnpm-workspace.yaml        # 워크스페이스 설정

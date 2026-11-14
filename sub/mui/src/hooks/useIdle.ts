@@ -59,7 +59,7 @@ export const useIdle = (
 ): boolean => {
   const [state, setState] = useState<boolean>(initialState);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: state는 effect 시작 시점의 초기값으로만 쓰이고 이후 로컬 변수(localState)로 관리되므로 의존성에 넣으면 리스너가 매번 재등록됨
+  /* oxlint-disable react-hooks/exhaustive-deps -- state는 effect 시작 시점의 초기값으로만 쓰이고 이후 로컬 변수(localState)로 관리되므로 의존성에 넣으면 리스너가 매번 재등록됨 */
   useEffect(() => {
     let mounted = true;
     let timeout: any;
@@ -102,6 +102,7 @@ export const useIdle = (
       document.removeEventListener('visibilitychange', onVisibility);
     };
   }, [ms, events]);
+  /* oxlint-enable react-hooks/exhaustive-deps */
 
   return state;
 };

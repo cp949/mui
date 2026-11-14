@@ -13,9 +13,10 @@
     "clean": "turbo clean"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.8",
     "@repo/typescript-config": "workspace:*",
-    "turbo": "^2.10.10"
+    "oxfmt": "^0.78.0",
+    "oxlint": "^1.93.0",
+    "turbo": "^2.11.11"
   },
   "packageManager": "pnpm@12.18.0",
   "engines": {
