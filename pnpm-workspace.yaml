@@ -5,6 +5,9 @@ packages:
 allowBuilds:
   esbuild: true
 
+minimumReleaseAgeExclude:
+  - postcss@8.5.33
+
 overrides:
   esbuild: ^0.28.2
   source-map-js: ^1.2.2

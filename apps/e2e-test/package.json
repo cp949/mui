@@ -16,8 +16,8 @@
     "test:e2e:headed": "playwright test --headed"
   },
   "dependencies": {
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@cp949/mui": "workspace:*",
@@ -26,11 +26,11 @@
     "@emotion/styled": "^11.14.1",
     "@playwright/test": "^1.62.1",
     "@repo/typescript-config": "workspace:*",
-    "@types/node": "^26.2.0",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
-    "@vitejs/plugin-react": "^6.0.5",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
     "typescript": "^6.0.3",
-    "vite": "^8.2.4"
+    "vite": "^8.3.8"
   }
 }
