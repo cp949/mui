@@ -43,9 +43,6 @@ jobs:
       - name: Build packages
         run: pnpm build
 
-      - name: Package for publishing
-        run: pnpm --filter @cp949/mui package
-
       - name: Check package contents
         run: |
           echo "Package contents:"
